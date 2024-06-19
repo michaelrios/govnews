@@ -1,0 +1,79 @@
+{
+  "name": "govnews",
+  "description": "Document parsing, and AI analysis",
+  "version": "0.0.0",
+  "author": "michaelrios",
+  "bin": {
+    "govnews": "./bin/run.js"
+  },
+  "bugs": "https://github.com/michaelrios/govnews/issues",
+  "dependencies": {
+    "@langchain/textsplitters": "^0.0.3",
+    "@oclif/core": "^4",
+    "@oclif/plugin-help": "^6",
+    "@oclif/plugin-plugins": "^5",
+    "chromadb": "^1.8.1",
+    "chromadb-default-embed": "^2.13.2",
+    "langchain": "^0.2.5",
+    "pdf-parse": "^1.1.1"
+  },
+  "devDependencies": {
+    "@langchain/community": "^0.2.12",
+    "@oclif/prettier-config": "^0.2.1",
+    "@oclif/test": "^4",
+    "@types/chai": "^4",
+    "@types/mocha": "^10",
+    "@types/node": "^18",
+    "chai": "^4",
+    "eslint": "^8",
+    "eslint-config-oclif": "^5",
+    "eslint-config-oclif-typescript": "^3",
+    "eslint-config-prettier": "^9",
+    "mocha": "^10",
+    "oclif": "^4",
+    "shx": "^0.3.3",
+    "ts-node": "^10",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "/bin",
+    "/dist",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/michaelrios/govnews",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "type": "module",
+  "oclif": {
+    "bin": "govnews",
+    "dirname": "govnews",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-plugins"
+    ],
+    "topicSeparator": " ",
+    "topics": {
+      "hello": {
+        "description": "Say hello to the world and others"
+      }
+    }
+  },
+  "repository": "michaelrios/govnews",
+  "scripts": {
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint . --ext .ts",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "pnpm run lint",
+    "prepack": "oclif manifest && oclif readme",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md"
+  },
+  "types": "dist/index.d.ts"
+}
